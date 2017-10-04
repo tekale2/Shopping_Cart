@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171004014034) do
+ActiveRecord::Schema.define(version: 20171004143554) do
 
   create_table "addresses", force: :cascade do |t|
     t.string "street"
@@ -40,7 +40,8 @@ ActiveRecord::Schema.define(version: 20171004014034) do
   create_table "order_items", force: :cascade do |t|
     t.integer "order_id"
     t.integer "item_id"
-    t.integer "quantity", null: false
+    t.integer "quantity",       null: false
+    t.integer "totalItemPrice"
   end
 
   create_table "orders", force: :cascade do |t|

@@ -13,6 +13,14 @@ namespace :import_data_csv do
     end
   end
 
+  task :create_payments =>  :environment do
+    CSV.foreach(File.expand_path("data/Payment.csv"), :headers=>true, converters: :date) do |row|
+      hashVal = row.to_hash
+      hashVal["expiry"] = Date.strptime(hashVal["expiry"], "%m/%d/%Y")
+      Payment.create!(hashVal)
+    end
+  end
+
   task :create_items =>  :environment do
     items_list = JSON.parse(File.read("data/Item.json"))
     items_list.each do |row|
