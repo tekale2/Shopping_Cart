@@ -36,6 +36,14 @@ namespace :import_data_csv do
     end
   end
 
+  task :create_order_items =>  :environment do
+    CSV.foreach(File.expand_path("data/OrderItem.csv"), :headers=>true) do |row|
+      hashVal = row.to_hash
+      OrderItem.create!(hashVal)
+    end
+  end
+
+
   task :create_items =>  :environment do
     items_list = JSON.parse(File.read("data/Item.json"))
     items_list.each do |row|
