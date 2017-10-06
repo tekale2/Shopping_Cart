@@ -1,0 +1,33 @@
+.container
+  .row
+    .col-md-offset-4.col-md-4
+      .panel.panel-default
+        .panel-heading 
+          %h4{:style=>"text-align:center;"} Search Customers
+        .panel-body
+          .search-form
+            %form#searchForm.form-horizontal
+              .form-group
+                %label.control-label.col-md-2{:for => "name"} Name:
+                .col-md-10
+                  %input#name.form-control{:placeholder => "FirstName LastName",:name=>"customer[name]", :type => "text"}/
+              .form-group
+                %label.control-label.col-md-2{:for => "email"} Email:
+                .col-md-10
+                  %input#email.form-control{:placeholder => "Email ID",:name=>"customer[email]",:type => "email"}/
+              .form-group
+                %label.control-label.col-md-2{:for => "contact"} Contact:
+                .col-md-10
+                  %input#contact.form-control{:placeholder => "xxx xxx xxxx",:name=>"customer[contact]", :type => "tel"}/
+              .form-group
+                .col-md-offset-4.col-md-8
+                  %button.btn.btn-default{:type => "submit"} Submit
+
+.container
+  %table#tableOutput.table.table-striped.table-bordered{:width=>"100%",:cellspacing=>"0"}
+    %thead
+      %tr
+        %th customerID
+        %th Name
+        %th Contact
+        %th EmailID
