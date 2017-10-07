@@ -2,11 +2,12 @@
 
 /*---JQuery Calls---*/
 $(document).ready(function() {
+var table;
 $( "#searchForm" ).submit(function( event ) {
     event.preventDefault();
     $.ajax({
         type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
-        url         : '/show', // the url where we want to POST
+        url         : $('#urlVal').val(), // the url where we want to POST
         data        : $(this).serializeArray(), // our data object
         dataType    : 'json', // what type of data do we expect back from the server
         encode      : true,
@@ -22,9 +23,16 @@ $( "#searchForm" ).submit(function( event ) {
                 obj["data"] = keys[i];
                 columnList.push(obj);
             }
-            $("#tableOutput").DataTable({
+            columnList.push({"data":null,"defaultContent":
+            '<button id="view" class="btn btn-sm btn-primary"><span class="glyphicon glyphicon-eye-open"></span></button>&nbsp;' +
+            '<button id="edit" class="btn btn-sm btn-warning"><span class="glyphicon glyphicon-edit"></span></button>&nbsp;' +
+            '<button id="delete" class="btn btn-sm btn-danger"><span class="glyphicon glyphicon-trash"></span></button>'});
+            table = $("#tableOutput").DataTable({
             data: returndata,
-            columns: columnList
+            columns: columnList,
+              "columnDefs": [
+                    { "width": 160, "targets": -1 }
+                    ]
             });
         });
     return false;

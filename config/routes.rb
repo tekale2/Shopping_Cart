@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
- resources :customers
  root to: "customers#index"
- post 'show'=>'customers#show'
+ resources :customers
+ resources :items
+ resources :addresses
+ post 'customers/show'=>'customers#show'
+ post 'items/show'=>'items#show'
+ post 'addresses/show'=>'addresses#show'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

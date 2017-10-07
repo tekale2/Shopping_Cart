@@ -1,0 +1,35 @@
+.container
+  .row
+    .col-md-offset-4.col-md-4
+      .panel.panel-default
+        .panel-heading 
+          %h4{:style=>"text-align:center;"} Search Grocery Products
+        .panel-body
+          .search-form
+            %form#searchForm.form-horizontal
+              .form-group
+                %label.control-label.col-md-2{:for => "name"} Street:
+                .col-md-10
+                  %input#name.form-control{:placeholder => "Item Name",:name=>"item[name]", :type => "text"}/
+              .form-group
+                %label.control-label.col-md-2{:for => "from"} Lower:
+                .col-md-10
+                  %input#from.form-control{:placeholder => "Lower Price Limit in $",:name=>"item[from]",:type => "number"}/
+              .form-group
+                %label.control-label.col-md-2{:for => "to"} Upper:
+                .col-md-10
+                  %input#to.form-control{:placeholder => "Upper Price Limit in $",:name=>"item[to]", :type => "number"}/
+              .form-group
+                .col-md-offset-4.col-md-8
+                  %button.btn.btn-default{:type => "submit"} Submit
+
+.container
+  %table#tableOutput.table.table-striped.table-bordered{:width=>"100%",:cellspacing=>"0"}
+    %thead
+      %tr
+        %th ItemID
+        %th Name
+        %th Description
+        %th Price in Dollars
+        %th Action
+%input#urlVal{:type => "hidden", :value => "/items/show"}
