@@ -2,7 +2,7 @@ class AddressesController < ApplicationController
     def index
         # nothing
     end
-    def show
+    def display
         list = addresses_params
         if list.empty?
             @addresses = Address.all

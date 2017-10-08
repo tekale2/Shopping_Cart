@@ -14,15 +14,15 @@
  *= require_self
  */
 .navbar-brand {
-    color: #b7fc7b !important;
+    color: #132770 !important;
     font-style: italic;
 }
 .navbar 
 {
-	background-color: #132770;
+	background-color: #b2ffbf;
 	z-index:1000;
 }
 
 .navbar-default .navbar-nav > li > a {
-    color: #b7fc7b;
+    color: #132770;
 }

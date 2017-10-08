@@ -2,7 +2,7 @@ class ItemsController < ApplicationController
     def index
         # nothing
     end
-    def show
+    def display
         list = items_params
         min = 0
         max = 200

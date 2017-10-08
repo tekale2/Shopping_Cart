@@ -1,0 +1,43 @@
+.container
+  .row
+    .col-md-offset-4.col-md-4
+      .panel.panel-default
+        .panel-heading 
+          %h4{:style=>"text-align:center;"} Customer Information
+        .panel-body
+          = form_tag customer_path(@customer),id: "editForm",:method => :put do
+            = label :customer, :name, 'Name:   '
+            = text_field :customer, 'name'
+            %br
+            = label :customer, :contact, 'Contact:'
+            = text_field :customer, 'contact'
+            %br
+            = label :customer, :email, 'Email ID:'
+            = text_field :customer, 'email'
+            %br
+            %br
+            = submit_tag 'Update Customer Info'
+.well
+  .row
+    .col-md-offset-4.col-md-4
+      %button#veiwAddresses.btn.btn-primary{:name => "veiwAddresses",:onclick=>"loadTable('/customer/addresses');"} Get Address List
+      %button#veiwOrders.btn.btn-primary{:name => "veiwOrders",:onclick=>"loadTable('/customer/orders');"} Get Order List
+      %button#veiwPayments.btn.btn-primary{:name => "veiwPayments",:onclick=>"loadTable('/customer/payments');"} Get Payment List
+%br
+
+.container
+  %table#tableOutput.table.table-striped.table-bordered{:width=>"100%",:cellspacing=>"0"}
+    %thead
+      %tr
+        %th ID
+.well
+  .row
+    .col-md-offset-5.col-md-4
+      %button#newOrder.btn.btn-primary{:name => "neworder",:onclick=>"loadTable('/customer/addresses');"} Add New order
+      %button#newPayment.btn.btn-primary{:name => "newPayment",:onclick=>"loadTable('/customer/orders');"} Add New Payment
+
+:javascript
+  function doView(id,tableName)
+  {
+    console.log(tableName);
+  }

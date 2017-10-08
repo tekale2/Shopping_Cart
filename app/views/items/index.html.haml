@@ -8,7 +8,7 @@
           .search-form
             %form#searchForm.form-horizontal
               .form-group
-                %label.control-label.col-md-2{:for => "name"} Street:
+                %label.control-label.col-md-2{:for => "name"} Name:
                 .col-md-10
                   %input#name.form-control{:placeholder => "Item Name",:name=>"item[name]", :type => "text"}/
               .form-group
@@ -21,7 +21,8 @@
                   %input#to.form-control{:placeholder => "Upper Price Limit in $",:name=>"item[to]", :type => "number"}/
               .form-group
                 .col-md-offset-4.col-md-8
-                  %button.btn.btn-default{:type => "submit"} Submit
+                  %button.btn.btn-default{:type => "submit"} Search
+              %div{:style=>"text-align:center"} (Click search with empty fields to get all records)
 
 .container
   %table#tableOutput.table.table-striped.table-bordered{:width=>"100%",:cellspacing=>"0"}
@@ -32,4 +33,4 @@
         %th Description
         %th Price in Dollars
         %th Action
-%input#urlVal{:type => "hidden", :value => "/items/show"}
+%input#urlVal{:type => "hidden", :value => "/items/display"}

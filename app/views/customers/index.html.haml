@@ -21,7 +21,8 @@
                   %input#contact.form-control{:placeholder => "xxx xxx xxxx",:name=>"customer[contact]", :type => "tel"}/
               .form-group
                 .col-md-offset-4.col-md-8
-                  %button.btn.btn-default{:type => "submit"} Submit
+                  %button.btn.btn-default{:type => "submit"} Search
+              %div{:style=>"text-align:center"} (Click search with empty fields to get all records)
 
 .container
   %table#tableOutput.table.table-striped.table-bordered{:width=>"100%",:cellspacing=>"0"}
@@ -32,4 +33,10 @@
         %th Email ID
         %th Contact
         %th Action
-%input#urlVal{:type => "hidden", :value => "/customers/show"}
+%input#urlVal{:type => "hidden", :value => "/customers/display"}
+
+:javascript
+  function doView(id,tableName)
+  {
+    window.location.href = '/customers/'+id+'/edit'
+  }
