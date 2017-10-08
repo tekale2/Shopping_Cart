@@ -1,0 +1,25 @@
+.container
+  .row
+    .col-md-offset-4.col-md-4
+      .panel.panel-default
+        .panel-heading 
+          %h4{:style=>"text-align:center;"} Add new Item
+        .panel-body
+          .search-form
+            %form#itemsForm.form-horizontal{:action=>"/orders/addNewItem",:method=>"POST"}
+              = token_tag
+              .form-group
+                %label.control-label.col-md-2{:for => "order_id"} OrderID:
+                .col-md-10
+                  = raw @order
+              .form-group
+                %label.control-label.col-md-2{:for => "item_id"} ItemID:
+                .col-md-10
+                  %input#item_id.form-control{:value=>"5",:name=>"order_item[item_id]",:type => "number"}/
+              .form-group
+                %label.control-label.col-md-2{:for => "quantity"} Quantity:
+                .col-md-10
+                  %input#quantity.form-control{:value=>"2",:name=>"order_item[quantity]",:type => "number"}/
+              .form-group
+                .col-md-offset-4.col-md-8
+                  %button.btn.btn-default{:type => "submit"} Add Item

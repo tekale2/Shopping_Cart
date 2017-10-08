@@ -5,6 +5,8 @@ Rails.application.routes.draw do
  resources :addresses
  resources :orders
  resources :payments
+ get 'newItem'=>'orders#newItem'
+ post 'orders/addNewItem' => 'orders#addNewItem'
  post 'customers/display'=>'customers#display'
  post 'items/display'=>'items#display'
  post 'addresses/display'=>'addresses#display'

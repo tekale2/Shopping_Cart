@@ -1,0 +1,30 @@
+%h4#orderid
+  Details for order ID: #{@order.id}
+    
+.container
+  %table#tableOutput.table.table-striped.table-bordered{:width=>"100%",:cellspacing=>"0"}
+    %thead
+      %tr
+        %th ItemID
+        %th Product
+        %th Price
+        %th Quantity
+        %th TotalPrice
+        %th Action
+    %tbody
+      - @orders.each do |order|
+        %tr
+          %td= order.id
+          %td= order.name
+          %td= order.price
+          %td= order.quantity
+          %td= order.totalItemPrice
+          %td
+            %button#delete.btn.btn-sm.btn-danger
+              %span.glyphicon.glyphicon-trash
+.well
+  .row
+    .col-md-offset-5.col-md-4
+      %button#newItem.btn.btn-primary{:name => "newItem",:onclick=>"newItemPage('/newItem');"} Add New Item
+    .col-md-offset-5.col-md-3
+      (Add Same item to change Quantity)

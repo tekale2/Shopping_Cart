@@ -39,5 +39,6 @@
 :javascript
   function doView(id,tableName)
   {
-    console.log(tableName);
+    if (tableName=='orders')
+      window.location.href = '/orders/'+id;
   }

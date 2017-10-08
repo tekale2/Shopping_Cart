@@ -10,6 +10,12 @@ function newPage(urlStr)
     var custID = actionStr.split("/").pop();
     window.location.href = urlStr+'?id='+custID;
 }
+function newItemPage(urlStr)
+{
+    var actionStr = document.getElementById('orderid').innerText;
+    var orderID = actionStr.split(":").pop().trim();
+    window.location.href = urlStr+'?id='+orderID;
+}
 function loadTable(urlStr){
 var actionStr = document.getElementById('editForm').action;
 var custID = actionStr.split("/").pop();
