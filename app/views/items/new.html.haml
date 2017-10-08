@@ -1,0 +1,25 @@
+.container
+  .row
+    .col-md-offset-3.col-md-6
+      .panel.panel-default
+        .panel-heading 
+          %h4{:style=>"text-align:center;"} New Item
+        .panel-body
+          .normal-form
+            %form#customerForm.form-horizontal{:action=>"/items",:method=>"POST"}
+              = token_tag
+              .form-group
+                %label.control-label.col-md-2{:for => "name"} Name:
+                .col-md-10
+                  %input#name.form-control{:placeholder => "Item Name",:name=>"item[name]", :type => "text"}/
+              .form-group
+                %label.control-label.col-md-2{:for => "desc"} Description:
+                .col-md-10
+                  %input#desc.form-control{:placeholder => "description",:name=>"item[description]",:type => "text"}/
+              .form-group
+                %label.control-label.col-md-2{:for => "price"} Price:
+                .col-md-10
+                  %input#price.form-control{:placeholder => "Price in $",:name=>"item[price]", :type => "number"}/
+              .form-group
+                .col-md-offset-4.col-md-8
+                  %button.btn.btn-default{:type => "submit"} Add New Item

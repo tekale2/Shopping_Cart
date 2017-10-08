@@ -4,6 +4,16 @@ class PaymentsController < ApplicationController
          @customer = "<input class='form-control' id='customer_id'\
            name='payment[customer_id]' value ="+id+" readonly>"
     end
+    def edit
+      id = params[:id]
+      @payment = Payment.find(id)
+    end
+    def update
+      @payment = Payment.find params[:id]
+      @payment.update_attributes!(payment_params)
+      flash[:notice] = " Payment details with id #{@payment.id} successfully updated."
+      redirect_to '/customers'
+    end
     def create
         @payment = Payment.new(payment_params)
         if @payment.save

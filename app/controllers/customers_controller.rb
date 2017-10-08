@@ -7,7 +7,15 @@ class CustomersController < ApplicationController
       id = params[:id]
       @customer = Customer.find(id)
     end
-
+    def create
+        @customer = Customer.new(customer_params)
+        if @customer.save
+            flash[:notice] = "Customer with id: #{@customer.id} was successfully created"
+        else
+            flash[:notice] = "Create Customer Failed"
+        end
+        redirect_to '/customers'
+    end
     def edit
       id = params[:id]
       @customer = Customer.find(id)

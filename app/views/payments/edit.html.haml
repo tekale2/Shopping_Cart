@@ -1,0 +1,22 @@
+.container
+  .row
+    .col-md-offset-4.col-md-4
+      .panel.panel-default
+        .panel-heading 
+          %h4{:style=>"text-align:center;"} Payment Information
+        .panel-body
+          = form_tag payment_path(@payment),id: "editForm",:method => :put do
+            = label :payment, :cardNo, 'CardNo:   '
+            = text_field :payment, 'cardNo'
+            %br
+            = label :payment, :cardType, 'Type:'
+            = text_field :payment, 'cardType'
+            %br
+            = label :payment, :cvv, 'CVV:'
+            = text_field :payment, 'cvv'
+            %br
+            = label :payment, :expiry, 'Expiry:'
+            = date_select :payment, 'expiry'
+            %br
+            %br
+            = submit_tag 'Update Payment Info'

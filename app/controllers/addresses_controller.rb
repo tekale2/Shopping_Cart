@@ -11,7 +11,26 @@ class AddressesController < ApplicationController
         end
         render json: @addresses
     end
-  
+
+    def edit
+      id = params[:id]
+      @address = Address.find(id)
+    end
+    def create
+        @address = Address.new(addresses_params)
+        if @address.save
+            flash[:notice] = "Address with id: #{@address.id} was successfully created"
+        else
+            flash[:notice] = "Create Address Failed"
+        end
+        redirect_to '/addresses'
+    end
+    def update
+      @address = Address.find params[:id]
+      @address.update_attributes!(addresses_params)
+      flash[:notice] = " Address details with id #{@address.id} successfully updated."
+      redirect_to '/addresses'
+    end
   private
 
   def addresses_params

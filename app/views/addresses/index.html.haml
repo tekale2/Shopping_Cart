@@ -1,3 +1,5 @@
+%h4
+  = flash[:notice]
 .container
   .row
     .col-md-offset-4.col-md-4
@@ -38,4 +40,17 @@
         %th State
         %th Zipcode
         %th Action
+
+.well
+  .row
+    .col-md-offset-5.col-md-4
+      %a{:href=>"/addresses/new"}
+        %button#newAddress.btn.btn-primary{:name => "newAddress"} Add New Address
+
 %input#urlVal{:type => "hidden", :value => "/addresses/display"}
+
+:javascript
+  function doView(id,tableName)
+  {
+    window.location.href = '/addresses/'+id+'/edit';
+  }

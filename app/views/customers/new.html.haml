@@ -1,0 +1,25 @@
+.container
+  .row
+    .col-md-offset-4.col-md-4
+      .panel.panel-default
+        .panel-heading 
+          %h4{:style=>"text-align:center;"} New Customer
+        .panel-body
+          .normal-form
+            %form#customerForm.form-horizontal{:action=>"/customers",:method=>"POST"}
+              = token_tag
+              .form-group
+                %label.control-label.col-md-2{:for => "name"} Name:
+                .col-md-10
+                  %input#name.form-control{:placeholder => "FirstName LastName",:name=>"customer[name]", :type => "text"}/
+              .form-group
+                %label.control-label.col-md-2{:for => "email"} Email:
+                .col-md-10
+                  %input#email.form-control{:placeholder => "Email ID",:name=>"customer[email]",:type => "email"}/
+              .form-group
+                %label.control-label.col-md-2{:for => "contact"} Contact:
+                .col-md-10
+                  %input#contact.form-control{:placeholder => "xxx xxx xxxx",:name=>"customer[contact]", :type => "tel"}/
+              .form-group
+                .col-md-offset-4.col-md-8
+                  %button.btn.btn-default{:type => "submit"} Add Customer

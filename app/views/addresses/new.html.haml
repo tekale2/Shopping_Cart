@@ -1,0 +1,29 @@
+.container
+  .row
+    .col-md-offset-4.col-md-4
+      .panel.panel-default
+        .panel-heading 
+          %h4{:style=>"text-align:center;"} New Address
+        .panel-body
+          .normal-form
+            %form#customerForm.form-horizontal{:action=>"/addresses",:method=>"POST"}
+              = token_tag
+              .form-group
+                %label.control-label.col-md-2{:for => "street"} Street:
+                .col-md-10
+                  %input#street.form-control{:placeholder => "Street Address",:name=>"address[street]", :type => "text"}/
+              .form-group
+                %label.control-label.col-md-2{:for => "city"} City:
+                .col-md-10
+                  %input#city.form-control{:placeholder => "City",:name=>"address[city]",:type => "text"}/
+              .form-group
+                %label.control-label.col-md-2{:for => "state"} State:
+                .col-md-10
+                  %input#state.form-control{:placeholder => "State Abbrev",:name=>"address[state]", :type => "text"}/
+              .form-group
+                %label.control-label.col-md-2{:for => "zip"} Zipcode:
+                .col-md-10
+                  %input#zip.form-control{:placeholder => "ZipCode",:name=>"address[zipcode]", :type => "number"}/
+              .form-group
+                .col-md-offset-4.col-md-8
+                  %button.btn.btn-default{:type => "submit"} Add Address

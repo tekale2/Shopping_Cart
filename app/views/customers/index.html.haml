@@ -35,6 +35,12 @@
         %th Email ID
         %th Contact
         %th Action
+
+.well
+  .row
+    .col-md-offset-5.col-md-4
+      %a{:href=>"/customers/new"}
+        %button#newCustomer.btn.btn-primary{:name => "newcustomer"} Add New Customer
 %input#urlVal{:type => "hidden", :value => "/customers/display"}
 
 :javascript

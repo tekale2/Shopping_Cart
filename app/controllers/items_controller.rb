@@ -2,6 +2,16 @@ class ItemsController < ApplicationController
     def index
         # nothing
     end
+    def edit
+      id = params[:id]
+      @item = Item.find(id)
+    end
+    def update
+      @item = Item.find params[:id]
+      @item.update_attributes!(items_params)
+      flash[:notice] = " Item details with id #{@item.id} successfully updated."
+      redirect_to '/items'
+    end
     def display
         list = items_params
         min = 0
@@ -25,11 +35,19 @@ class ItemsController < ApplicationController
         end
         render json: @items
     end
-  
+    def create
+        @item = Item.new(items_params)
+        if @item.save
+            flash[:notice] = "Item with id: #{@item.id} was successfully created"
+        else
+            flash[:notice] = "Create Item Failed"
+        end
+        redirect_to '/items'
+    end
   private
 
   def items_params
-    params.require(:item).permit(:name, :from, :to).
+    params.require(:item).permit(:name, :from, :to,:price,:description).
     delete_if {|key, value| value.blank? }
   end
 end

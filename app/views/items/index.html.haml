@@ -1,3 +1,5 @@
+%h4
+  = flash[:notice]
 .container
   .row
     .col-md-offset-4.col-md-4
@@ -33,4 +35,17 @@
         %th Description
         %th Price in Dollars
         %th Action
+
+.well
+  .row
+    .col-md-offset-5.col-md-4
+      %a{:href=>"/items/new"}
+        %button#newitem.btn.btn-primary{:name => "newitem"} Add New Item
+
 %input#urlVal{:type => "hidden", :value => "/items/display"}
+
+:javascript
+  function doView(id,tableName)
+  {
+    window.location.href = '/items/'+id+'/edit';
+  }
