@@ -48,3 +48,13 @@
   {
     window.location.href = '/customers/'+id+'/edit';
   }
+  function doDelete(id,tableName)
+  {
+      $.ajax({
+        url: '/customers/'+id,
+        type: 'DELETE',
+        success: function(result) {
+           alert("Message: "+result['message']);
+        }
+    });
+  }

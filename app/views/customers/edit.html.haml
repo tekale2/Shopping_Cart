@@ -44,3 +44,18 @@
     if(tableName=='payments')
       window.location.href = '/payments/'+id+'/edit';
   }
+  function doDelete(id,tableName)
+  {
+     var urlStr;
+    if (tableName=='orders')
+      urlStr = '/orders/'+id;
+    else if (tableName=='payments')
+      urlStr = '/payments/'+id;
+      $.ajax({
+        url: urlStr,
+        type: 'DELETE',
+        success: function(result) {
+           alert("Message: "+result['message']);
+        }
+    });
+  }

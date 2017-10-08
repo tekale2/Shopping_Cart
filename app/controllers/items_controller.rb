@@ -44,6 +44,13 @@ class ItemsController < ApplicationController
         end
         redirect_to '/items'
     end
+    def destroy
+        @item = Item.find(params[:id])
+        @item.destroy
+        @message = {:message =>"Item successfully deleted"}
+        
+        render json: @message
+      end
   private
 
   def items_params

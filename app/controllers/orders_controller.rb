@@ -49,6 +49,20 @@ class OrdersController < ApplicationController
         end
       redirect_to '/customers'
     end
+  def destroy
+      @order = Order.find(params[:id])
+      @order.destroy
+      @message = {:message =>"Order successfully deleted"}
+      
+      render json: @message
+    end
+  def removeItem
+      @orderItem = OrderItem.where(:order_id=>params[:order_id],:item_id=>params[:id])
+      @orderItem.first.destroy
+      @message = {:message =>"OrderItem successfully deleted from the order"}
+      
+      render json: @message
+  end
   private
   def order_params
     params.require(:order).permit(:placedOn, :customer_id, :payment_id,:address_id)

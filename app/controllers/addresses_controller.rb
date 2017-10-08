@@ -31,6 +31,13 @@ class AddressesController < ApplicationController
       flash[:notice] = " Address details with id #{@address.id} successfully updated."
       redirect_to '/addresses'
     end
+    def destroy
+        @address = Address.find(params[:id])
+        @address.destroy
+        @message = {:message =>"Address successfully deleted"}
+        
+        render json: @message
+     end
   private
 
   def addresses_params

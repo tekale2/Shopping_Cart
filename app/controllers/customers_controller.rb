@@ -54,8 +54,14 @@ class CustomersController < ApplicationController
         render json: @customers
     end
   def new
-    print(params)
   end
+  def destroy
+      @customer = Customer.find(params[:id])
+      @customer.destroy
+      @message = {:message =>"Customer successfully deleted"}
+      
+      render json: @message
+    end
   private
 
   def customer_params

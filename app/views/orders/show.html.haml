@@ -28,3 +28,17 @@
       %button#newItem.btn.btn-primary{:name => "newItem",:onclick=>"newItemPage('/newItem');"} Add New Item
     .col-md-offset-5.col-md-3
       (Add Same item to change Quantity)
+
+:javascript
+  function doDelete(id,tableName)
+  {
+    var actionStr = document.getElementById('orderid').innerText;
+    var orderID = actionStr.split(":").pop().trim();
+      $.ajax({
+        url: "/removeItem/"+id+"/"+orderID,
+        type: 'DELETE',
+        success: function(result) {
+           alert("Message: "+result['message']);
+        }
+    });
+  }

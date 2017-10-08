@@ -24,6 +24,13 @@ class PaymentsController < ApplicationController
         end
         redirect_to '/customers'
     end
+    def destroy
+      @payment = Payment.find(params[:id])
+      @payment.destroy
+      @message = {:message =>"Payment successfully deleted"}
+      
+      render json: @message
+    end
   private
 
   def payment_params

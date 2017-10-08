@@ -22,7 +22,7 @@ var custID = actionStr.split("/").pop();
 var buttonStr;
  if (urlStr.includes('addresses'))
  {
-    buttonStr = deleteStr;
+    buttonStr = "None";
     currTableName = 'addresses';
  }
  else if(urlStr.includes('orders'))
@@ -79,6 +79,11 @@ var dataVal = {name:"customer[id]",value:custID};
           if (button_id=='view' || button_id == 'edit'){
               doView(tdata.id,currTableName);
           }
+          else if(button_id == 'delete')
+          {
+              doDelete(tdata.id,currTableName);
+              table.row( $(this).parents('tr') ).remove().draw();
+          }
           
       } );
         });
@@ -94,7 +99,14 @@ $(document).ready(function() {
       if (button_id=='view' || button_id == 'edit'){
           doView(tdata.id,currTableName);
       }
-      
+      else if(button_id == 'delete')
+      {
+          var val = tdata.id
+          if(val == null)
+            val = tdata[0];
+          doDelete(val,currTableName);
+          table.row( $(this).parents('tr') ).remove().draw();
+      }
   } );
 
 $( "#searchForm" ).submit(function( event ) {
