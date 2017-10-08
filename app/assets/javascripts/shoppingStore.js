@@ -4,6 +4,12 @@ var editStr = '<button id="edit" class="btn btn-sm btn-warning"><span class="gly
 var deleteStr = '<button id="delete" class="btn btn-sm btn-danger"><span class="glyphicon glyphicon-trash"></span></button>';
 
 var currTableName = "";
+function newPage(urlStr)
+{
+    var actionStr = document.getElementById('editForm').action;
+    var custID = actionStr.split("/").pop();
+    window.location.href = urlStr+'?id='+custID;
+}
 function loadTable(urlStr){
 var actionStr = document.getElementById('editForm').action;
 var custID = actionStr.split("/").pop();
@@ -15,7 +21,7 @@ var buttonStr;
  }
  else if(urlStr.includes('orders'))
  {
-    buttonStr = veiwStr+editStr+deleteStr
+    buttonStr = veiwStr+deleteStr
     currTableName = 'orders';
  }
  else

@@ -1,0 +1,33 @@
+.container
+  .row
+    .col-md-offset-4.col-md-4
+      .panel.panel-default
+        .panel-heading 
+          %h4{:style=>"text-align:center;"} New Order
+        .panel-body
+          .search-form
+            %form#ordersForm.form-horizontal{:action=>"/orders",:method=>"POST"}
+              = token_tag
+              .form-group
+                %label.control-label.col-md-2{:for => "customer_id"} CustID:
+                .col-md-10
+                  = raw @customer
+              .form-group
+                %label.control-label.col-md-2{:for => "date"} Date:
+                .col-md-10
+                  %input#date.form-control{:value=>"2017-08-19",:name=>"order[placedOn]",:type => "date"}/
+              .form-group
+                %label.control-label.col-md-2{:for => "payid"} PayID:
+                .col-md-10
+                  %select.form-control{:name=>"order[payment_id]"}
+                    - @paylist.each do |element|
+                      %option #{element}
+              .form-group
+                %label.control-label.col-md-2{:for => "addid"} AddrID:
+                .col-md-10
+                  %select.form-control{:name=>"order[address_id]"}
+                    - @addressList.each do |element|
+                      %option #{element}
+              .form-group
+                .col-md-offset-4.col-md-8
+                  %button.btn.btn-default{:type => "submit"} Submit Order

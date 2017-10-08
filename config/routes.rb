@@ -3,6 +3,8 @@ Rails.application.routes.draw do
  resources :customers
  resources :items
  resources :addresses
+ resources :orders
+ resources :payments
  post 'customers/display'=>'customers#display'
  post 'items/display'=>'items#display'
  post 'addresses/display'=>'addresses#display'

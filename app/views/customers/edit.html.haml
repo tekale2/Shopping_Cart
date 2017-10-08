@@ -33,8 +33,8 @@
 .well
   .row
     .col-md-offset-5.col-md-4
-      %button#newOrder.btn.btn-primary{:name => "neworder",:onclick=>"loadTable('/customer/addresses');"} Add New order
-      %button#newPayment.btn.btn-primary{:name => "newPayment",:onclick=>"loadTable('/customer/orders');"} Add New Payment
+      %button#newOrder.btn.btn-primary{:name => "neworder",:onclick=>"newPage('/orders/new');"} Add New order
+      %button#newPayment.btn.btn-primary{:name => "newPayment",:onclick=>"newPage('/payments/new');"} Add New Payment
 
 :javascript
   function doView(id,tableName)

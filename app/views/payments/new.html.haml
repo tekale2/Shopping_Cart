@@ -1,0 +1,33 @@
+.container
+  .row
+    .col-md-offset-4.col-md-4
+      .panel.panel-default
+        .panel-heading 
+          %h4{:style=>"text-align:center;"} New Payment
+        .panel-body
+          .search-form
+            %form#ordersForm.form-horizontal{:action=>"/payments",:method=>"POST"}
+              = token_tag
+              .form-group
+                %label.control-label.col-md-2{:for => "customer_id"} CustID:
+                .col-md-10
+                  = raw @customer
+              .form-group
+                %label.control-label.col-md-2{:for => "cardno"} CardNo:
+                .col-md-10
+                  %input#cardno.form-control{:value=> "1234567898765432", :name=>"payment[cardNo]",:type => "text"}/
+              .form-group
+                %label.control-label.col-md-2{:for => "cardtype"} Type:
+                .col-md-10
+                  %input#cardtype.form-control{:value=>"visa",:name=>"payment[cardType]",:type => "text"}/
+              .form-group
+                %label.control-label.col-md-2{:for => "cvv"} CVV:
+                .col-md-10
+                  %input#cvv.form-control{:placeholder=>"237",:name=>"payment[cvv]",:type => "number"}/
+              .form-group
+                %label.control-label.col-md-2{:for => "expiry"} Expiry:
+                .col-md-10
+                  %input#expiry.form-control{:value=>"2017-08-19",:name=>"payment[expiry]",:type => "date"}/
+              .form-group
+                .col-md-offset-4.col-md-8
+                  %button.btn.btn-default{:type => "submit"} Submit Payment Info

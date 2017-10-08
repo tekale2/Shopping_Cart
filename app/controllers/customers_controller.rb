@@ -33,7 +33,7 @@ class CustomersController < ApplicationController
     def update
       @customer = Customer.find params[:id]
       @customer.update_attributes!(customer_params)
-      flash[:notice] = "#{@customer.id} was successfully updated."
+      flash[:notice] = " Customer details with id #{@customer.id} successfully updated."
       redirect_to '/customers'
     end
     def display
@@ -45,7 +45,9 @@ class CustomersController < ApplicationController
         end
         render json: @customers
     end
-  
+  def new
+    print(params)
+  end
   private
 
   def customer_params

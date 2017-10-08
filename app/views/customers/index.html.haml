@@ -1,3 +1,5 @@
+%h4
+  = flash[:notice]
 .container
   .row
     .col-md-offset-4.col-md-4
@@ -38,5 +40,5 @@
 :javascript
   function doView(id,tableName)
   {
-    window.location.href = '/customers/'+id+'/edit'
+    window.location.href = '/customers/'+id+'/edit';
   }
