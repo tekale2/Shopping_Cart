@@ -18,7 +18,7 @@ class OrdersController < ApplicationController
       id = params[:id]
       @order = Order.new
       @order = Order.find(id)
-      @orders = @order.items.select('items.id,items.price,items.name,order_items.quantity,order_items.totalItemPrice')
+      @orders = @order.items.select('items.id','items.price','items.name',:quantity,:totalItemPrice)
     end
     def newItem
       id = params[:id]
