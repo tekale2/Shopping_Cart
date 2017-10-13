@@ -5,18 +5,22 @@
         .panel-heading 
           %h4{:style=>"text-align:center;"} Customer Information
         .panel-body
-          = form_tag customer_path(@customer),id: "editForm",:method => :put do
-            = label :customer, :name, 'Name:   '
-            = text_field :customer, 'name'
-            %br
-            = label :customer, :contact, 'Contact:'
-            = text_field :customer, 'contact'
-            %br
-            = label :customer, :email, 'Email ID:'
-            = text_field :customer, 'email'
-            %br
-            %br
-            = submit_tag 'Update Customer Info'
+          = form_tag customer_path(@customer),id: "editForm", class: "form-horizontal",:method => :put do
+            .form-group
+              = label :customer, :name, 'Name:', class: "col-md-2"
+              .col-md-10
+                = text_field :customer, 'name',class:"form-control"
+            .form-group
+              = label :customer, :contact, 'Contact:', class: "col-md-2"
+              .col-md-10
+                = text_field :customer, 'contact',class:"form-control"
+            .form-group
+              = label :customer,:email, 'Email ID:', class: "col-md-2"
+              .col-md-10
+                = text_field :customer, 'email',class:"form-control"
+            .form-group
+              .col-md-offset-3.col-md-8
+                = submit_tag 'Update Customer Info', class:"btn btn-default"
 .well
   .row
     .col-md-offset-4.col-md-4

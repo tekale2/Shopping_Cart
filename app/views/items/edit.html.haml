@@ -1,19 +1,23 @@
 .container
   .row
-    .col-md-offset-4.col-md-4
+    .col-md-offset-3.col-md-6
       .panel.panel-default
         .panel-heading 
           %h4{:style=>"text-align:center;"} Item Information
         .panel-body
-          = form_tag item_path(@item),id: "editForm",:method => :put do
-            = label :item, :name, 'Name:   '
-            = text_field :item, 'name'
-            %br
-            = label :item, :description, 'Description:'
-            = text_field :item, 'description'
-            %br
-            = label :item, :price, 'Price:'
-            = text_field :item, 'price'
-            %br
-            %br
-            = submit_tag 'Update Item Info'
+          = form_tag item_path(@item),id: "editForm", class: "form-horizontal",:method => :put do
+            .form-group
+              = label :item, :name, 'Name:', class: "col-md-2"
+              .col-md-10
+                = text_field :item, 'name', class:"form-control"
+            .form-group
+              = label :item, :description, 'Description:', class: "col-md-2"
+              .col-md-10
+                = text_field :item, 'description', class:"form-control"
+            .form-group
+              = label :item, :price, 'Price:', class: "col-md-2"
+              .col-md-10
+                = text_field :item, 'price', class:"form-control"
+            .form-group
+              .col-md-offset-4.col-md-8
+                = submit_tag 'Update Item Info',class:"btn btn-default"
